@@ -43,6 +43,23 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setHasFixedSize(true);
 
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+        listaTarefas.add(new Tarefa("Maykon","Data"));
+
         mAdapter.notifyDataSetChanged();
     }
 

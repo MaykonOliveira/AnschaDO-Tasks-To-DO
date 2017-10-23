@@ -12,10 +12,10 @@
         android:id="@+id/text_TituloCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="@string/nome_da_tarefa"
+        android:text="@string/oque_voc_pretende_fazer"
         android:layout_alignParentTop="true"/>
 
     <EditText
@@ -33,17 +33,78 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/data_da_tarefa"
+        android:layout_marginTop="16dp"
+        android:text="@string/data_da_atividade"
         android:layout_below="@+id/edit_TituloCadastro"/>
 
-    <Spinner
-        android:id="@+id/spinner2"
+    <EditText
+        android:id="@+id/edit_DataCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_DataCadastro"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp" />
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="none" />
+
+    <TextView
+        android:id="@+id/text_Periodicidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/edit_DataCadastro"
+        android:text="@string/qual_a_periodicidade_de_sua_tarefa" />
+
+    <Spinner
+        android:id="@+id/spinner_Periodicidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@+id/text_Periodicidade"/>
+
+    <TextView
+        android:id="@+id/text_Criticidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/spinner_Periodicidade"
+        android:text="@string/qual_a_criticidade_da_atividade"/>
+
+    <Spinner
+        android:id="@+id/spinner_Criticidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@+id/text_Criticidade"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_AdicionarTarefa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/spinner_Criticidade" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_CancelarInclusao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        android:layout_alignTop="@+id/fab_AdicionarTarefa"
+        android:layout_alignStart="@+id/spinner_Criticidade"
+        android:layout_marginStart="16dp" />
 
 </RelativeLayout>

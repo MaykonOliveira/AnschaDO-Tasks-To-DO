@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Exemplos</string>
     <string name="action_settings">Settings</string>
-    <string name="nome_da_tarefa">Nome da Tarefa</string>
-    <string name="data_da_tarefa">Data da tarefa</string>
     <string name="informe_o_nome_de_sua_tarefa">Informe o nome de sua tarefa!</string>
+    <string name="oque_voc_pretende_fazer">Oque você pretende fazer?</string>
+    <string name="data_da_atividade">Data da atividade</string>
+    <string name="qual_a_periodicidade_de_sua_tarefa">Qual a periodicidade de sua tarefa?</string>
+    <string name="qual_a_criticidade_da_atividade">Qual a criticidade da atividade?</string>
 </resources>

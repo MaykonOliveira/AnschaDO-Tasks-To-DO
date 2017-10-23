@@ -28,7 +28,7 @@
         android:layout_height="24dp"
         android:src="@drawable/deleteicon"
         android:layout_marginTop="14dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="24dp"
         android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
