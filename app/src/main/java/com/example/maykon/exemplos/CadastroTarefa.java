@@ -1,0 +1,13 @@
+package com.example.maykon.exemplos;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class CadastroTarefa extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cadastro_tarefa);
+    }
+}

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Exemplos</string>
     <string name="action_settings">Settings</string>
+    <string name="nome_da_tarefa">Nome da Tarefa</string>
+    <string name="data_da_tarefa">Data da tarefa</string>
+    <string name="informe_o_nome_de_sua_tarefa">Informe o nome de sua tarefa!</string>
 </resources>

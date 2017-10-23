@@ -1,6 +1,8 @@
 package com.example.maykon.exemplos;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -9,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Tarefa> listaTarefas = new ArrayList<>();
     private TarefasAdapter mAdapter;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -37,11 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setHasFixedSize(true);
 
-        listaTarefas.add(new Tarefa("Toperson","Data tarefa"));
-        listaTarefas.add(new Tarefa("Joao","Data tarefa"));
-        listaTarefas.add(new Tarefa("Mario","Data tarefa"));
-
         mAdapter.notifyDataSetChanged();
+    }
+
+    public void chamaActivityCadastro(View v){
+        Intent intent = new Intent(this, CadastroTarefa.class);
+        startActivity(intent);
     }
 
     @Override
