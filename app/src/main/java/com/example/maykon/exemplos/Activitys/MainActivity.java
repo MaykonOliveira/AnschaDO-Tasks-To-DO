@@ -1,4 +1,4 @@
-package com.example.maykon.exemplos;
+package com.example.maykon.exemplos.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.maykon.exemplos.Adapters.TarefasAdapter;
+import com.example.maykon.exemplos.Modelos.Tarefa;
+import com.example.maykon.exemplos.R;
 
 import java.util.ArrayList;
 
@@ -42,25 +46,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         recyclerView.setHasFixedSize(true);
-
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-        listaTarefas.add(new Tarefa("Maykon","Data"));
-
-        mAdapter.notifyDataSetChanged();
     }
 
     public void chamaActivityCadastro(View v){

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.maykon.exemplos.CadastroTarefa">
+    tools:context="com.example.maykon.exemplos.Activitys.CadastroTarefa">
 
 
     <TextView
@@ -67,8 +67,6 @@
         android:layout_below="@+id/text_HoraCadastro"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
         android:inputType="none" />
 
     <TextView
@@ -117,6 +115,7 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
+        android:onClick="adicionarTarefa"
         android:src="@drawable/ic_send_white_24dp" />
 
 </RelativeLayout>
