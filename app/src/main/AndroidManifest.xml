@@ -19,7 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastroTarefa"></activity>
+        <activity android:name=".CadastroTarefa"
+            android:label="@string/cadastro_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            >
+        </activity>
     </application>
 
 </manifest>
