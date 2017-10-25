@@ -6,7 +6,7 @@ package com.example.maykon.exemplos.Modelos;
 
 public class Tarefa {
 
-    private Integer id;
+    private int id;
     private String titulo;
     private String data;
     private String hora;
@@ -53,7 +53,7 @@ public class Tarefa {
         this.criticidade = criticidade;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

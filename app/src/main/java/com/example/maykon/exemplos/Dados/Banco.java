@@ -18,38 +18,36 @@ import java.util.List;
 
 public class Banco extends SQLiteOpenHelper {
 
-    private static final String NOME_BANCO = "banco.db";
-    private static final String TABELA = "tarefas";
-    private static final String ID = "id";
-    private static final String TITULO = "titulo";
-    private static final String DATA = "data";
-    private static final String HORA = "hora";
-    private static final String PERIODICIDADE = "periodicidade";
-    private static final String CRITICIDADE = "criticidade";
-    private static final int VERSAO = 1;
+    private static final String TABELA = "TAREFAS";
+    private static final String ID = "_ID";
+    private static final String TITULO = "TITULO";
+    private static final String DATA = "DATA";
+    private static final String HORA = "HORA";
+    private static final String PERIODICIDADE = "PERIODICIDADE";
+    private static final String CRITICIDADE = "CRITICIDADE";
 
     public Banco(Context context) {
-        super(context, NOME_BANCO,null,VERSAO);
+        super(context, TABELA,null,1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         String sql = "CREATE TABLE " + TABELA + "("
-                + ID + " INTEGER PRIMARY KEY,"
+                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + TITULO + " TEXT,"
                 + DATA + " TEXT,"
                 + HORA + " TEXT,"
                 + PERIODICIDADE + " TEXT,"
                 + CRITICIDADE + " TEXT"
-                +")";
+                +");";
 
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABELA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABELA + ";");
         onCreate(db);
     }
 
@@ -79,7 +77,7 @@ public class Banco extends SQLiteOpenHelper {
     public List<Tarefa> obterTarefas(){
         List<Tarefa> listaTarefas = new ArrayList<>();
 
-        String selectQuery = "SELECT  * FROM " + TABELA;
+        String selectQuery = "SELECT  * FROM " + TABELA +";";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

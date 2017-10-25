@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.maykon.exemplos.Adapters.TarefasAdapter;
+import com.example.maykon.exemplos.Dados.Banco;
 import com.example.maykon.exemplos.Modelos.Tarefa;
 import com.example.maykon.exemplos.R;
 
@@ -22,9 +23,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ArrayList<Tarefa> listaTarefas = new ArrayList<>();
     private TarefasAdapter mAdapter;
-    private FloatingActionButton fab;
+    Banco crud = new Banco(this);
+    private ArrayList<Tarefa> listaTarefas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        this.listaTarefas = (ArrayList<Tarefa>) crud.obterTarefas();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -46,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         recyclerView.setHasFixedSize(true);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        this.listaTarefas = (ArrayList<Tarefa>) crud.obterTarefas();
+        mAdapter = new TarefasAdapter(this.listaTarefas);
+        recyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
     public void chamaActivityCadastro(View v){

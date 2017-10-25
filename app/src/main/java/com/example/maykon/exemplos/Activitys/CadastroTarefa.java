@@ -25,7 +25,6 @@ public class CadastroTarefa extends AppCompatActivity {
     private Spinner spinner_Criticidade;
     private Spinner spinner_Periodicidade;
 
-    private FloatingActionButton fab;
     private static final String[] mOpcoesCriticidade = { "Alta", "Media", "Baixa" };
     private static final String[] mOpcoesPeriodicidade = { "Diaria", "Semanal", "Mensal", "Anual", "Uma vez" };
 
@@ -66,6 +65,7 @@ public class CadastroTarefa extends AppCompatActivity {
         String resultado = crud.insereDado(titulo,data,hora,periodicidade,criticidade);
 
         Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+        finish();
     }
 
     private void exibeData(){
