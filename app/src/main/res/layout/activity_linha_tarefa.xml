@@ -27,7 +27,7 @@
         android:id="@+id/button_Remove"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/deleteicon"
+        android:src="@drawable/ic_action_delete"
         android:layout_marginTop="14dp"
         android:layout_marginRight="24dp"
         android:layout_alignParentRight="true"/>

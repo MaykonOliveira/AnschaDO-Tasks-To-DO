@@ -1,6 +1,5 @@
 package com.example.maykon.exemplos.Adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -8,15 +7,16 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.maykon.exemplos.Activitys.DadosTarefa;
-import com.example.maykon.exemplos.Activitys.MainActivity;
 import com.example.maykon.exemplos.Dados.Banco;
 import com.example.maykon.exemplos.Modelos.Tarefa;
 import com.example.maykon.exemplos.R;
+import com.example.maykon.exemplos.Utilidades.CustomFilter;
 
 import java.util.ArrayList;
 
@@ -24,12 +24,39 @@ import java.util.ArrayList;
  * Created by maykon on 23/10/17.
  */
 
-public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasViewHolder> {
+public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasViewHolder> implements Filterable {
 
-    private ArrayList<Tarefa> listaTarefa;
+    private ArrayList<Tarefa> listaTarefa,filterList;
+    CustomFilter filter;
 
     public TarefasAdapter(ArrayList<Tarefa> tarefas){
         this.listaTarefa = tarefas;
+        this.filterList = tarefas;
+    }
+
+    @Override
+    public Filter getFilter() {
+        if(filter==null)
+        {
+            filter=new CustomFilter(filterList,this);
+        }
+        return filter;
+    }
+
+    public ArrayList<Tarefa> getListaTarefa(){
+        return this.listaTarefa;
+    }
+
+    public ArrayList<Tarefa> getListaFiltrada(){
+        return this.filterList;
+    }
+
+    public void setListaTarefa(ArrayList<Tarefa> tarefa){
+        this.listaTarefa = tarefa;
+    }
+
+    public void setListaFiltrada(ArrayList<Tarefa> tarefa){
+        this.filterList = tarefa;
     }
 
     public class TarefasViewHolder extends ViewHolder{
@@ -63,7 +90,6 @@ public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasV
                 }
             });
         }
-
     }
 
     public void enviaDadosActivity(View v,int position){
@@ -100,7 +126,7 @@ public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasV
     public void onBindViewHolder(TarefasViewHolder holder, int position) {
         Tarefa tarefa = this.listaTarefa.get(position);
         holder.titulo.setText(tarefa.getTitulo());
-        holder.data.setText(tarefa.getData());
+        holder.data.setText(tarefa.getData() + ", " + tarefa.getHora());
         holder.getAdapterPosition();
     }
 

@@ -11,14 +11,6 @@ import java.util.TimeZone;
 
 public class DateUtils {
 
-    public static Date getDate(int year, int month, int dayOfMonth) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, dayOfMonth);
-        Date data = calendar.getTime();
-
-        return data;
-    }
-
     public static String dateToString(int year, int month, int dayOfMonth) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, dayOfMonth);
@@ -30,10 +22,4 @@ public class DateUtils {
         return dt;
     }
 
-    public static String dateToString(Date date) {
-        DateFormat format = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        String dt = format.format(date);
-
-        return dt;
-    }
 }

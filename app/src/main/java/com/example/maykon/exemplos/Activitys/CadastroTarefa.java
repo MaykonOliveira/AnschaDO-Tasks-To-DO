@@ -1,15 +1,17 @@
 package com.example.maykon.exemplos.Activitys;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.icu.util.Calendar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.maykon.exemplos.Dados.Banco;
@@ -33,6 +35,10 @@ public class CadastroTarefa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_tarefa);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
+        setSupportActionBar(toolbar);
+
         edit_DataCadastro = (EditText) findViewById(R.id.edit_DataCadastro);
         edit_TituloCadastro = (EditText) findViewById(R.id.edit_TituloCadastro);
         edit_HoraCadastro = (EditText) findViewById(R.id.edit_HoraCadastro);
@@ -45,16 +51,46 @@ public class CadastroTarefa extends AppCompatActivity {
 
         ArrayAdapter<String> adapterPeriodicidade = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mOpcoesPeriodicidade);
         spinner_Periodicidade.setAdapter(adapterPeriodicidade);
+    }
 
-        ExibeDataListener listener = new ExibeDataListener();
-        edit_DataCadastro.setOnClickListener(listener);
-        edit_DataCadastro.setOnFocusChangeListener(listener);
+    public void capturaHora(View v){
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(CadastroTarefa.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                edit_HoraCadastro.setText(selectedHour + ":" + selectedMinute);
+            }
+        }, hour, minute, true);
+        mTimePicker.setTitle("Selecione a Hora");
+        mTimePicker.show();
+    }
 
+    public void capturaData(View v){
+        Calendar mcurrentDate = Calendar.getInstance();
+        int mYear = mcurrentDate.get(Calendar.YEAR);
+        int mMonth = mcurrentDate.get(Calendar.MONTH);
+        int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog mDatePicker;
+        mDatePicker = new DatePickerDialog(CadastroTarefa.this, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                selectedmonth = selectedmonth + 1;
+                String formatado = DateUtils.dateToString(selectedyear,selectedmonth,selectedday);
+                edit_DataCadastro.setText(formatado);
+            }
+        }, mYear, mMonth, mDay);
+        mDatePicker.setTitle("Selecione a Data");
+        mDatePicker.show();
     }
 
     public void adicionarTarefa(View v){
 
         Banco crud = new Banco(CadastroTarefa.this);
+        Boolean faltaCampos = false;
+        String erros = "Você não nos informou ";
 
         String titulo = edit_TituloCadastro.getText().toString();
         String data = edit_DataCadastro.getText().toString();
@@ -62,46 +98,39 @@ public class CadastroTarefa extends AppCompatActivity {
         String periodicidade = spinner_Periodicidade.getSelectedItem().toString();
         String criticidade = spinner_Criticidade.getSelectedItem().toString();
 
-        String resultado = crud.insereDado(titulo,data,hora,periodicidade,criticidade);
+        if(titulo.isEmpty()){
+            if(!faltaCampos)
+                erros = erros + "o Titulo de sua tarefa";
+            else
+                erros = erros + ", Titulo da tarefa";
 
-        Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
-        finish();
-    }
-
-    private void exibeData(){
-
-        Calendar calendar = Calendar.getInstance();
-
-        int ano = calendar.get(Calendar.YEAR);
-        int mes = calendar.get(Calendar.MONTH);
-        int dia = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog dlg = new DatePickerDialog(this, new SelecionaDataListener(), ano, mes, dia);
-        dlg.show();
-    }
-
-    private class ExibeDataListener implements View.OnClickListener, View.OnFocusChangeListener{
-
-        @Override
-        public void onClick(View v) {
-            exibeData();
+            faltaCampos = true;
         }
 
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            exibeData();
+        if (data.isEmpty()){
+            if(!faltaCampos)
+                erros = erros + "a Data de sua tarefa";
+            else
+                erros = erros + ", Data da tarefa";
+
+            faltaCampos = true;
+        }
+
+        if(hora.isEmpty()){
+            if(!faltaCampos)
+                erros = erros + "a Hora de sua tarefa";
+            else
+                erros = erros + ", Hora da tarefa";
+
+            faltaCampos = true;
+        }
+
+        if(!faltaCampos) {
+            String resultado = crud.insereDado(titulo, data, hora, periodicidade, criticidade);
+            Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), erros, Toast.LENGTH_LONG).show();
         }
     }
-
-    private class SelecionaDataListener implements DatePickerDialog.OnDateSetListener{
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-            String dt = DateUtils.dateToString(year, month, dayOfMonth);
-
-            edit_DataCadastro.setText(dt);
-        }
-    }
-
 }
