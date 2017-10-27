@@ -18,6 +18,9 @@ import com.example.maykon.exemplos.Dados.Banco;
 import com.example.maykon.exemplos.R;
 import com.example.maykon.exemplos.Utilidades.DateUtils;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class CadastroTarefa extends AppCompatActivity {
 
     private EditText edit_TituloCadastro;
@@ -61,7 +64,21 @@ public class CadastroTarefa extends AppCompatActivity {
         mTimePicker = new TimePickerDialog(CadastroTarefa.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                edit_HoraCadastro.setText(selectedHour + ":" + selectedMinute);
+
+                String horaFormatada = String.valueOf(selectedHour);
+                String minutoFormatado = String.valueOf(selectedMinute);
+
+                if (String.valueOf(selectedHour).length() == 1){
+                    NumberFormat formatter = new DecimalFormat("00");
+                    horaFormatada = formatter.format(selectedHour);
+                }
+
+                if (String.valueOf(selectedMinute).length() == 1){
+                    NumberFormat formatter = new DecimalFormat("00");
+                    minutoFormatado = formatter.format(selectedMinute);
+                }
+                
+                edit_HoraCadastro.setText(horaFormatada + ":" + minutoFormatado);
             }
         }, hour, minute, true);
         mTimePicker.setTitle("Selecione a Hora");
