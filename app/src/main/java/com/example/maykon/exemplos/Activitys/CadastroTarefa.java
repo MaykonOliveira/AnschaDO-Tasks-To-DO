@@ -77,7 +77,7 @@ public class CadastroTarefa extends AppCompatActivity {
                     NumberFormat formatter = new DecimalFormat("00");
                     minutoFormatado = formatter.format(selectedMinute);
                 }
-                
+
                 edit_HoraCadastro.setText(horaFormatada + ":" + minutoFormatado);
             }
         }, hour, minute, true);
