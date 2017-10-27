@@ -30,7 +30,7 @@ public class CustomFilter extends Filter{
             for (int i=0;i<filterList.size();i++)
             {
 
-                if(filterList.get(i).getTitulo().toUpperCase().contains(constraint)||filterList.get(i).getData().toUpperCase().contains(constraint)||filterList.get(i).getHora().toUpperCase().contains(constraint))
+                if(filterList.get(i).getTitulo().toUpperCase().contains(constraint))
                 {
                     filteredPlayers.add(filterList.get(i));
                 }

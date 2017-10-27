@@ -106,19 +106,19 @@ public class Banco extends SQLiteOpenHelper {
         db.close();
     }
 
-    public int updateTarefa(Tarefa tarefa) {
+    public int updateTarefa(String id,String titulo,String data,String hora,String criticidade,String periodicidade) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(TITULO, tarefa.getTitulo());
-        values.put(DATA, tarefa.getData());
-        values.put(HORA, tarefa.getHora());
-        values.put(PERIODICIDADE, tarefa.getPeriodicidade());
-        values.put(CRITICIDADE, tarefa.getCriticidade());
+        values.put(TITULO, titulo);
+        values.put(DATA, data);
+        values.put(HORA, hora);
+        values.put(PERIODICIDADE, criticidade);
+        values.put(CRITICIDADE, periodicidade);
 
         // updating row
         return db.update(TABELA, values, ID + " = ?",
-                new String[] { String.valueOf(tarefa.getId()) });
+                new String[] { id });
     }
 
 }

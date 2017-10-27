@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.maykon.exemplos.Activitys.CadastroTarefa">
+    tools:context="com.example.maykon.exemplos.Activitys.AtualizaDadosTarefa">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_cadastro"
+            android:id="@+id/toolbar_atualizacao"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -26,7 +26,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/content_cadastro_tarefa" />
+        <include layout="@layout/content_atualiza_tarefa" />
 
     </android.support.design.widget.CoordinatorLayout>
 </android.support.design.widget.CoordinatorLayout>

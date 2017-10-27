@@ -25,7 +25,9 @@
             android:theme="@style/AppTheme.NoActionBar">
             >
         </activity>
-        <activity android:name=".Activitys.DadosTarefa"></activity>
+        <activity android:name=".Activitys.AtualizaDadosTarefa"
+            android:label="Atualização de tarefa">
+        </activity>
     </application>
 
 </manifest>

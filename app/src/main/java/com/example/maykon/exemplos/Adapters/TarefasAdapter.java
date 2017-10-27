@@ -1,9 +1,13 @@
 package com.example.maykon.exemplos.Adapters;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.test.mock.MockContext;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +15,17 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.maykon.exemplos.Activitys.DadosTarefa;
+import com.example.maykon.exemplos.Activitys.AtualizaDadosTarefa;
+import com.example.maykon.exemplos.Activitys.MainActivity;
 import com.example.maykon.exemplos.Dados.Banco;
 import com.example.maykon.exemplos.Modelos.Tarefa;
 import com.example.maykon.exemplos.R;
 import com.example.maykon.exemplos.Utilidades.CustomFilter;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by maykon on 23/10/17.
@@ -79,28 +86,30 @@ public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasV
             titulo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    enviaDadosActivity(v,getAdapterPosition());
+                    atualizaDadosActivity(v,getAdapterPosition());
                 }
             });
 
             data.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    enviaDadosActivity(v,getAdapterPosition());
+                    atualizaDadosActivity(v,getAdapterPosition());
                 }
             });
         }
     }
 
-    public void enviaDadosActivity(View v,int position){
+    public void atualizaDadosActivity(View v,int position){
+
         Bundle bundle = new Bundle();
         Tarefa tarefa = listaTarefa.get(position);
+        bundle.putString("ID", String.valueOf(tarefa.getId()));
         bundle.putString("TITULO", tarefa.getTitulo());
         bundle.putString("DATA", tarefa.getData());
         bundle.putString("HORA", tarefa.getHora());
         bundle.putString("PERIODICIDADE", tarefa.getPeriodicidade());
         bundle.putString("CRITICIDADE", tarefa.getCriticidade());
-        Intent intent = new Intent(v.getContext(), DadosTarefa.class);
+        Intent intent = new Intent(v.getContext(), AtualizaDadosTarefa.class);
         intent.putExtras(bundle);
         v.getContext().startActivity(intent);
     }
@@ -108,11 +117,10 @@ public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasV
     public void delete(int position,View v) {
 
         Banco crud = new Banco(v.getContext());
-
         crud.deleteTarefa(listaTarefa.get(position));
-
         listaTarefa.remove(position);
         notifyItemRemoved(position);
+
     }
 
     @Override

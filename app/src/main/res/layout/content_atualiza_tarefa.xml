@@ -1,115 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.maykon.exemplos.Activitys.DadosTarefa">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_TituloTarefa1"
+        android:id="@+id/text_TituloAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/oque_voc_pretende_fazer"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:layout_alignParentTop="true"/>
 
-    <TextView
-        android:id="@+id/text_TituloTarefa2"
+    <EditText
+        android:id="@+id/edit_TituloAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textSize="16sp"
-        android:layout_below="@+id/text_TituloTarefa1"/>
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/informe_o_nome_de_sua_tarefa"
+        android:layout_below="@+id/text_TituloAtualizacao"/>
 
     <TextView
-        android:id="@+id/text_DataTarefa1"
+        android:id="@+id/text_DataAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="18dp"
         android:text="@string/data_da_atividade"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_below="@+id/text_TituloTarefa2"/>
+        android:layout_below="@+id/edit_TituloAtualizacao"/>
 
-    <TextView
-        android:id="@+id/text_DataTarefa2"
+    <EditText
+        android:id="@+id/edit_DataAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_DataTarefa1"
+        android:layout_below="@+id/text_DataAtualizacao"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textSize="16sp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:onClick="capturaData"
         android:inputType="none" />
 
     <TextView
-        android:id="@+id/text_HoraTarefa1"
+        android:id="@+id/text_HoraAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="18dp"
         android:text="@string/hora_da_atividade"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_below="@+id/text_DataTarefa2"/>
+        android:layout_below="@+id/edit_DataAtualizacao"/>
 
-    <TextView
-        android:id="@+id/text_HoraTarefa2"
+    <EditText
+        android:id="@+id/edit_HoraAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_HoraTarefa1"
+        android:layout_below="@+id/text_HoraAtualizacao"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textSize="16sp" />
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:onClick="capturaHora"
+        android:inputType="none" />
 
     <TextView
-        android:id="@+id/text_Periodicidade1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/text_HoraTarefa2"
-        android:text="@string/qual_a_periodicidade_de_sua_tarefa"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/text_Periodicidade2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_below="@+id/text_Periodicidade1"
-        android:textSize="16sp"/>
-
-    <TextView
-        android:id="@+id/text_Criticidade1"
+        android:id="@+id/text_PeriodicidadeAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="18dp"
-        android:layout_below="@+id/text_Periodicidade2"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_below="@+id/edit_HoraAtualizacao"
+        android:text="@string/qual_a_periodicidade_de_sua_tarefa" />
+
+    <Spinner
+        android:id="@+id/spinner_PeriodicidadeAtualizacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@+id/text_PeriodicidadeAtualizacao"/>
+
+    <TextView
+        android:id="@+id/text_CriticidadeAtualizacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/spinner_PeriodicidadeAtualizacao"
         android:text="@string/qual_a_criticidade_da_atividade"/>
 
-    <TextView
-        android:id="@+id/text_Criticidade2"
+    <Spinner
+        android:id="@+id/spinner_CriticidadeAtualizacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textSize="16sp"
-        android:layout_below="@+id/text_Criticidade1"/>
+        android:layout_below="@+id/text_CriticidadeAtualizacao"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_AtualizarTarefa"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignEnd="@+id/spinner_CriticidadeAtualizacao"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:clickable="true"
+        android:src="@drawable/ic_send_white_24dp"
+        android:focusable="true" />
 
 </RelativeLayout>

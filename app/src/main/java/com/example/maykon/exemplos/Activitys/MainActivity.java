@@ -50,19 +50,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setHasFixedSize(true);
-
-//        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String query) {
-//                mAdapter.getFilter().filter(query);
-//                return false;
-//            }
-//        });
     }
 
     @Override
