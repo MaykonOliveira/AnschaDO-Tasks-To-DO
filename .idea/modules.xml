@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AnschaDO-Tasks-To-DO.iml" filepath="$PROJECT_DIR$/AnschaDO-Tasks-To-DO.iml" />
       <module fileurl="file://$PROJECT_DIR$/Exemplos.iml" filepath="$PROJECT_DIR$/Exemplos.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ToDo-List-M2.iml" filepath="$PROJECT_DIR$/ToDo-List-M2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

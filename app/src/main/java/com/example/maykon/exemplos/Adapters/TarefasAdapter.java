@@ -1,13 +1,11 @@
 package com.example.maykon.exemplos.Adapters;
 
-import android.content.Context;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.test.mock.MockContext;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +13,14 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.maykon.exemplos.Activitys.AtualizaDadosTarefa;
-import com.example.maykon.exemplos.Activitys.MainActivity;
 import com.example.maykon.exemplos.Dados.Banco;
 import com.example.maykon.exemplos.Modelos.Tarefa;
 import com.example.maykon.exemplos.R;
 import com.example.maykon.exemplos.Utilidades.CustomFilter;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by maykon on 23/10/17.
@@ -78,8 +73,22 @@ public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasV
 
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    delete(getAdapterPosition(),v);
+                public void onClick(final View v) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
+                    dialog.setMessage("Confirmar exclusão do registro?");
+                    dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            delete(getAdapterPosition(),v);
+                        }
+                    }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    dialog.setTitle("Confirmação de exclusão");
+                    dialog.show();
                 }
             });
 
