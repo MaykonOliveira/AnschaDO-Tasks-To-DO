@@ -45,20 +45,8 @@ public class TarefasAdapter extends RecyclerView.Adapter<TarefasAdapter.TarefasV
         return filter;
     }
 
-    public ArrayList<Tarefa> getListaTarefa(){
-        return this.listaTarefa;
-    }
-
-    public ArrayList<Tarefa> getListaFiltrada(){
-        return this.filterList;
-    }
-
     public void setListaTarefa(ArrayList<Tarefa> tarefa){
         this.listaTarefa = tarefa;
-    }
-
-    public void setListaFiltrada(ArrayList<Tarefa> tarefa){
-        this.filterList = tarefa;
     }
 
     public class TarefasViewHolder extends ViewHolder{

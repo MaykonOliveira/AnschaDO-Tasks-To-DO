@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.example.maykon.exemplos.Modelos.Tarefa;
 
@@ -116,9 +115,7 @@ public class Banco extends SQLiteOpenHelper {
         values.put(PERIODICIDADE, criticidade);
         values.put(CRITICIDADE, periodicidade);
 
-        // updating row
         return db.update(TABELA, values, ID + " = ?",
                 new String[] { id });
     }
-
 }

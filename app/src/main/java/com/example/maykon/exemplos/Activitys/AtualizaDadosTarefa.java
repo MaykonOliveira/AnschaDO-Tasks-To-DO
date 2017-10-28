@@ -13,14 +13,15 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.maykon.exemplos.Dados.Banco;
-import com.example.maykon.exemplos.Modelos.Tarefa;
 import com.example.maykon.exemplos.R;
 import com.example.maykon.exemplos.Utilidades.DateUtils;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class AtualizaDadosTarefa extends AppCompatActivity {
 
@@ -147,7 +148,20 @@ public class AtualizaDadosTarefa extends AppCompatActivity {
         mTimePicker = new TimePickerDialog(AtualizaDadosTarefa.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                edit_HoraAtualizacao.setText(selectedHour + ":" + selectedMinute);
+                String horaFormatada = String.valueOf(selectedHour);
+                String minutoFormatado = String.valueOf(selectedMinute);
+
+                if (String.valueOf(selectedHour).length() == 1){
+                    NumberFormat formatter = new DecimalFormat("00");
+                    horaFormatada = formatter.format(selectedHour);
+                }
+
+                if (String.valueOf(selectedMinute).length() == 1){
+                    NumberFormat formatter = new DecimalFormat("00");
+                    minutoFormatado = formatter.format(selectedMinute);
+                }
+
+                edit_HoraAtualizacao.setText(horaFormatada + ":" + minutoFormatado);
             }
         }, hour, minute, true);
         mTimePicker.setTitle("Selecione a Hora");
